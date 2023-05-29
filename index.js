@@ -14,13 +14,21 @@ db.serialize(() => {
     db.run(queries.Tweets.create, 'あけおめ！', 3, '2023-01-01 00:00:00');
     db.run(queries.Tweets.create, '今年もよろしくお願いします！', 2, '2023-01-01 00:00:01');
     db.run(queries.Tweets.create, '今年こそは痩せるぞ！', 1, '2023-01-01 00:00:02');
-    
+
     db.all(queries.Tweets.findAll, (err, rows) => {
         console.log(rows);
     });
 
     db.all(queries.Users.findAll, (err, rows) => {
         console.log(rows);
+    });
+
+    db.get(queries.Users.findByTweetId, 1, (err, row) => {
+        console.log(row);
+    });
+
+    db.get(queries.Users.findByTweetId, 4, (err, row) => {
+        console.log(row);
     });
 });
 
